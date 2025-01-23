@@ -160,20 +160,28 @@ llm-manager/
 ```bash
 # Backend
 cd backend
-poetry install
-poetry run alembic upgrade head
+chmod +x scripts/*.sh  # Tornar scripts executáveis
+./scripts/setup.sh     # Instalar dependências e configurar ambiente
+./scripts/start.sh     # Iniciar o servidor
 
 # Frontend
 cd frontend
-pnpm install
-pnpm dev
+chmod +x scripts/*.sh  # Tornar scripts executáveis
+./scripts/setup.sh     # Instalar dependências e configurar ambiente
+pnpm dev              # Iniciar servidor de desenvolvimento
 
 # Infraestrutura
 docker-compose up -d
 ```
 
 ### 3. Ambiente de Desenvolvimento
-- VSCode com extensões recomendadas
+- VSCode com extensões recomendadas:
+  - ESLint
+  - Prettier
+  - Tailwind CSS IntelliSense
+  - PostCSS Language Support
+  - Jest
+  - Storybook
 - Prettier + ESLint (Frontend)
 - Black + isort (Backend)
 - Husky para pre-commit hooks
