@@ -18,7 +18,7 @@ O LLM Manager é um sistema gerenciador multi-tenant de LLMs que atua como inter
 ### Frontend
 - **Framework**: Next.js 14 (App Router)
 - **Estilização**: TailwindCSS + shadcn/ui
-- **Gerenciamento de Estado**: 
+- **Gerenciamento de Estado**:
   - Zustand (estado global)
   - TanStack Query (estado do servidor)
 - **Formulários**: React Hook Form + Zod
@@ -56,7 +56,7 @@ O LLM Manager é um sistema gerenciador multi-tenant de LLMs que atua como inter
 class UserService:
     def __init__(self, repository: UserRepository):
         self.repository = repository
-    
+
     async def create_user(self, user_data: UserCreate) -> User:
         # Validação e lógica de negócio
         pass
@@ -153,38 +153,69 @@ llm-manager/
 - Docker e Docker Compose
 - Node.js 18+
 - Python 3.11+
-- Poetry (gerenciamento de deps Python)
+- pip (geralmente já vem com Python)
 - pnpm (gerenciamento de deps Node)
 
 ### 2. Setup
+
+#### Pré-requisitos
 ```bash
-# Backend
+# Instalar Python 3.11.7
+python3.11 -m pip install --upgrade pip
+python3.11 -m pip install virtualenv
+```
+
+#### Backend
+```bash
+# Entrar no diretório do backend
 cd backend
-chmod +x scripts/*.sh  # Tornar scripts executáveis
-./scripts/setup.sh     # Instalar dependências e configurar ambiente
-./scripts/start.sh     # Iniciar o servidor
 
-# Frontend
+# Tornar scripts executáveis
+chmod +x scripts/*.sh
+
+# Instalar dependências e configurar ambiente
+./scripts/setup.sh
+
+# Ativar ambiente virtual
+source .venv/bin/activate
+
+# Iniciar servidor
+./scripts/start.sh
+```
+
+#### Frontend
+```bash
+# Entrar no diretório do frontend
 cd frontend
-chmod +x scripts/*.sh  # Tornar scripts executáveis
-./scripts/setup.sh     # Instalar dependências e configurar ambiente
-pnpm dev              # Iniciar servidor de desenvolvimento
 
-# Infraestrutura
+# Instalar dependências
+pnpm install
+
+# Iniciar servidor de desenvolvimento
+pnpm dev
+```
+
+#### Infraestrutura
+```bash
+# Iniciar serviços Docker
 docker-compose up -d
 ```
 
-### 3. Ambiente de Desenvolvimento
-- VSCode com extensões recomendadas:
-  - ESLint
-  - Prettier
-  - Tailwind CSS IntelliSense
-  - PostCSS Language Support
-  - Jest
-  - Storybook
-- Prettier + ESLint (Frontend)
-- Black + isort (Backend)
-- Husky para pre-commit hooks
+### 3. Requisitos do Sistema
+
+#### Backend
+- Python 3.11+
+- pip (geralmente já vem com Python)
+- PostgreSQL 15
+- Redis 7
+
+#### Frontend
+- Node.js 18+
+- pnpm 8+
+
+#### Infraestrutura
+- Docker 24+
+- Docker Compose V2
 
 ## Deploy
 
